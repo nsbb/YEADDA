@@ -567,7 +567,7 @@ class Application(Frame):
     def replaceString(self, content, string, replaceType, cursor_index):
         keydef = self.get_cmd_by_key(replaceType)
         if keydef is not None:
-            new_string = "[@" + string + "#" + keydef.name + "*]"
+            new_string = "[@#" + string + "#" + keydef.name + "*]"
             row, col = cursor_index.split('.')
             newcursor_index = f"{row}.{int(col) + len(keydef.name) + 5}"
             content = content.replace(string, new_string, 1)
