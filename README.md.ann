@@ -7,7 +7,7 @@ YEDDA: A Lightweight Collaborative Text Span Annotation Tool
 
 About:
 ====
-YEDDA (the previous [@#SUTDAnnotator#Artifical*]) is developed for annotating chunk/entity/event on text (almost all languages including English, [@#Chinese#Event*]), symbol and even emoji. It supports shortcut [@#annotatio#Fin-Concept*]n which is extremely [@#efficient#a*] to annotate text by hand. The user only need to select t[@#ext span a#dd*]nd press shortcut key, the span will be annotated automatically. It also support command annotation model which annotates multiple entities in batch and support export annotated text into sequence text. Besides, intelligent recommendation and adminstrator analysis is also included in updated version. It is compatiable with all mainstream operating systems includings Windows, Linux and MacOS. 
+YEDDA (the previous [@#SUTDAnno#Artifical*]tator) is developed for annotating chunk/e[@#ntity/even#Fin-Concept*]t on text (almost all languages inclu[@#ding English, Chinese), symbol and even emoji. It supports shortcut a#Event*]nnotation which is extremely ef[@#ficient to annotate text by hand. The user only need to select text span a#Fin-Concept*]nd press shortcut key, the span will be annotated au[@#tomati#Fin-Concept*]cally. It also support command annotation model which annotates multiple entities in batch and support export annotated text into sequence text. Besides, intelligent recommendation and adminstrator analysis is also included in updated version. It is compatiable with all mainstream operating systems includings Windows, Linux and MacOS. 
 
 For more details, please refer to [our paper (ACL2018:demo, best demo nomination)](https://arxiv.org/pdf/1711.03759.pdf).
 

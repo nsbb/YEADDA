@@ -180,13 +180,14 @@ class KeyMapFrame(Frame):
         new_map = []
         for i, cmd in enumerate(self.keymap):
             new_name = self.name_entries[i].get()
-            #
-            cell_name = 
+            cell_name = self.name_entries[0]+self.name_entries[1]+self.name_entries[2]
+            #print('new_name : ',new_name,'cell_name : ',cell_name)
+            print('new_name',new_name,type(new_name)
             if new_name.strip() != '':
-                new_map.append(KeyDef(cmd.key, new_name, cmd.desc, cmd.color))
+#                new_map.append(KeyDef(cmd.key, new_name, cmd.desc, cmd.color))
+                new_map.append(KeyDef(cmd.key, cell_name, cmd.desc, cmd.color))
             else:
                 print(f'{cmd.key} key deleted')
-        print('read_key:',new_map)
         return new_map
 
 
