@@ -152,6 +152,7 @@ class KeyMapFrame(Frame):
     def create_widgets(self):
         title = Label(self, text="Shortcuts map", foreground="blue", font=(self.textFontStyle, 14, "bold"))
         title.grid(row=0, column=0, columnspan=2, sticky=W, padx=6, pady=8)
+        print('ne=',self.name_entries)
         for row, item in enumerate(self.keymap, 1):
             key_lbl = Label(self, text=item.key.upper() + ": ", font=(self.textFontStyle, 14, "bold"))
             key_lbl.grid(row=row, column=0, sticky=NW, padx=4, pady=4)
@@ -478,8 +479,6 @@ class Application(Frame):
 
     def execute_cursor_command(self, command):
         print("Command:" + command)
-        print('ne=',KeyMapFrame.name_entries)
-        print('key_labels=',KeyMapFrame.key_labels)
         found, (start, end) = self.text.current_entity()
         selected = self.text.get_selection()
         if not found and not selected:
