@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 from tkinter import *
-from tkinter.ttk import *  # Frame, B[@#utton, #Artifical*]Label, Style, Scrollbar
+from tkinter.ttk import *  # Frame, Button, Label, Style, Scrollbar
 import tkinter.filedialog as tkFileDialog
 import tkinter.font as tkFont
 import re
 from collections import deque
 import pickle
 import os.path
-import platform
+import [@#platform#Artifical*]
 
 
 class Example(Frame):
