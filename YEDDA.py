@@ -268,6 +268,7 @@ class Application(Frame):
         config_dic = {}
         for item in self.pressCommand:
             config_dic[item.key] = item.name
+        print('cd:',config_dic)
         return config_dic
 
     def readConfig(self):
@@ -570,7 +571,7 @@ class Application(Frame):
 
     def replaceString(self, content, string, replaceType, cursor_index):
         keydef = self.get_cmd_by_key(replaceType)
-        print('keydef:',keydef[1].name,keydef[0].name)
+        print('keydef:',keydef.name)
         if keydef is not None:
             new_string = "[@#" + string + "#" + keydef.name + "*]"
             row, col = cursor_index.split('.')
