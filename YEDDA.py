@@ -634,7 +634,7 @@ class Application(Frame):
         self.pressCommand = self.keymap_frame.read_keymap()
         with open(self.configFile, 'wb') as fp:
             print('fp',fp)
-            print('self.pressCommand',self.pressCommand)
+            print('self.pressCommand',self.pressCommand,'\n')
             json.dump(self.KeyDef2Dic(self.pressCommand), fp)
         self.keymap_frame.update_keymap(self.pressCommand)
         messagebox.showinfo("Remap Notification",
@@ -658,7 +658,7 @@ class Application(Frame):
             self.configFile += ".config"
         with open(self.configFile, 'wb') as fp:
             print('fp',fp)
-            print('self.pressCommand',self.pressCommand)
+            print('self.pressCommand',self.pressCommand,'\n')
             json.dump(self.KeyDef2Dic(self.pressCommand), fp)
         self.keymap_frame.update_keymap(self.pressCommand)
         messagebox.showinfo("Save New Map Notification",
