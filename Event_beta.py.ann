@@ -2,12 +2,12 @@
 from tkinter import *
 from tkinter.ttk import *  # Frame, Button, Label, Style, Scrollbar
 import tkinter.filedialog as tkFileDialog
-import tkinter.font as tkFont
+import tkinter.font[@# as tkFont#Fin-Concept*]
 import re
-from collections import deque
+from collections imp[@#ort deque#Artifical*]
 import pickle
 import os.path
-import [@#platform#Artifical*]
+import platform
 
 
 class Example(Frame):

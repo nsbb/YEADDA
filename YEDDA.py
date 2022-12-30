@@ -175,12 +175,12 @@ class KeyMapFrame(Frame):
         """read current keymap in GUI, might be changed by user"""
         new_map = []
         for i, cmd in enumerate(self.keymap):
-            new_name = self.name_entries[i].get()
-            #cell_name = self.name_entries[0].get()+','+self.name_entries[1].get()+','+self.name_entries[2].get()
-            if new_name.strip() != '':
-            #if cell_name.strip() != '':
-                new_map.append(KeyDef(cmd.key, new_name, cmd.desc, cmd.color))
-                #new_map.append(KeyDef(cmd.key, cell_name, cmd.desc, cmd.color))
+            #new_name = self.name_entries[i].get()
+            cell_name = self.name_entries[0].get()+','+self.name_entries[1].get()+','+self.name_entries[2].get()
+            #if new_name.strip() != '':
+            if cell_name.strip() != '':
+                #new_map.append(KeyDef(cmd.key, new_name, cmd.desc, cmd.color))
+                new_map.append(KeyDef(cmd.key, cell_name, cmd.desc, cmd.color))
             else:
                 print(f'{cmd.key} key deleted')
         return new_map
@@ -327,7 +327,7 @@ class Application(Frame):
         cmd_var = StringVar()
         cmd_var.trace_add('write', lambda _, _1, _2: self.preview_cmd_range())
         self.entry = Entry(self, validate='focus', vcmd=self.preview_cmd_range, textvariable=cmd_var)
-        self.entry.grid(row=self.textRow + 1, column=1, columnspan=self.textColumn - 2, sticky=NSEW, pady=4, padx=8)
+        self.entry.grid(row=self.textRow - 1, column=1, columnspan=self.textColumn - 2, sticky=NSEW, pady=4, padx=8)
         self.entry.bind('<FocusOut>', self.clear_preview_mark)
         self.entry.bind('<Return>', self.execute_command)
 
