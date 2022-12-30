@@ -152,7 +152,6 @@ class KeyMapFrame(Frame):
     def create_widgets(self):
         title = Label(self, text="Shortcuts map", foreground="blue", font=(self.textFontStyle, 14, "bold"))
         title.grid(row=0, column=0, columnspan=2, sticky=W, padx=6, pady=8)
-        print('ne=',self.name_entries)
         for row, item in enumerate(self.keymap, 1):
             key_lbl = Label(self, text=item.key.upper() + ": ", font=(self.textFontStyle, 14, "bold"))
             key_lbl.grid(row=row, column=0, sticky=NW, padx=4, pady=4)
@@ -162,8 +161,8 @@ class KeyMapFrame(Frame):
             name_entry.insert(0, item.name)
             name_entry.grid(row=row, column=1, columnspan=1, rowspan=1, sticky=NW, padx=4, pady=4)
             self.name_entries.append(name_entry)
-            print(key_lbl)
-            print('ne=',self.name_entries)
+            #self.name_entries=self.name_entries+self.name_entries
+        print('creat_ne=',self.name_entries)
 
     def update_keymap(self, keymap):
         self.keymap = sorted(keymap, key=lambda x: x.key)
@@ -173,6 +172,7 @@ class KeyMapFrame(Frame):
             ent.destroy()
         self.key_labels = []
         self.name_entries = []
+        print('update_key:',key_map)
         self.create_widgets()
 
     def read_keymap(self) -> List[KeyDef]:
@@ -184,6 +184,7 @@ class KeyMapFrame(Frame):
                 new_map.append(KeyDef(cmd.key, new_name, cmd.desc, cmd.color))
             else:
                 print(f'{cmd.key} key deleted')
+        print('read_key:',new_map)
         return new_map
 
 
