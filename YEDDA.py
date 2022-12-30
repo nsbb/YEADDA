@@ -137,7 +137,7 @@ class KeyDef:
     desc: str = ''
     color: str = None
 
-
+#changed read_keymap function
 class KeyMapFrame(Frame):
     def __init__(self, parent, keymap: List[KeyDef]):
         super().__init__(parent, relief='groove')
