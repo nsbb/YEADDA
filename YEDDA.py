@@ -162,7 +162,7 @@ class KeyMapFrame(Frame):
             name_entry.grid(row=row, column=1, columnspan=1, rowspan=1, sticky=NW, padx=4, pady=4)
             self.name_entries.append(name_entry)
             print(key_lbl)
-            print('ne=',name_entries)
+            print('ne=',self.name_entries)
 
     def update_keymap(self, keymap):
         self.keymap = sorted(keymap, key=lambda x: x.key)
@@ -478,6 +478,8 @@ class Application(Frame):
 
     def execute_cursor_command(self, command):
         print("Command:" + command)
+        print('ne=',KeyMapFrame.name_entries)
+        print('key_labels=',KeyMapFrame.key_labels)
         found, (start, end) = self.text.current_entity()
         selected = self.text.get_selection()
         if not found and not selected:
