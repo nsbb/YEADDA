@@ -180,6 +180,8 @@ class KeyMapFrame(Frame):
         new_map = []
         for i, cmd in enumerate(self.keymap):
             new_name = self.name_entries[i].get()
+            #
+            cell_name = 
             if new_name.strip() != '':
                 new_map.append(KeyDef(cmd.key, new_name, cmd.desc, cmd.color))
             else:
