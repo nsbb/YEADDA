@@ -18,7 +18,6 @@ from tkinter.scrolledtext import ScrolledText
 from dataclasses import dataclass
 from typing import List, Optional, Tuple
 import json
-#library
 
 from utils.recommend import *
 
@@ -161,8 +160,6 @@ class KeyMapFrame(Frame):
             name_entry.insert(0, item.name)
             name_entry.grid(row=row, column=1, columnspan=1, rowspan=1, sticky=NW, padx=4, pady=4)
             self.name_entries.append(name_entry)
-            #self.name_entries=self.name_entries+self.name_entries
-        print('creat_ne=',self.name_entries)
 
     def update_keymap(self, keymap):
         self.keymap = sorted(keymap, key=lambda x: x.key)
@@ -172,18 +169,17 @@ class KeyMapFrame(Frame):
             ent.destroy()
         self.key_labels = []
         self.name_entries = []
-        print('update_key:',key_map)
         self.create_widgets()
 
     def read_keymap(self) -> List[KeyDef]:
         """read current keymap in GUI, might be changed by user"""
         new_map = []
         for i, cmd in enumerate(self.keymap):
-            new_name = self.name_entries[i].get()
+            #new_name = self.name_entries[i].get()
             cell_name = self.name_entries[0].get()+','+self.name_entries[1].get()+','+self.name_entries[2].get()
-            #print('new_name : ',new_name,'cell_name : ',cell_name)
-            if new_name.strip() != '':
-#                new_map.append(KeyDef(cmd.key, new_name, cmd.desc, cmd.color))
+            #if new_name.strip() != '':
+            if cell_name.strip() != '':
+                #new_map.append(KeyDef(cmd.key, new_name, cmd.desc, cmd.color))
                 new_map.append(KeyDef(cmd.key, cell_name, cmd.desc, cmd.color))
             else:
                 print(f'{cmd.key} key deleted')
@@ -271,7 +267,6 @@ class Application(Frame):
         config_dic = {}
         for item in self.pressCommand:
             config_dic[item.key] = item.name
-        #print('cd:',config_dic)
         return config_dic
 
     def readConfig(self):
@@ -574,7 +569,6 @@ class Application(Frame):
 
     def replaceString(self, content, string, replaceType, cursor_index):
         keydef = self.get_cmd_by_key(replaceType)
-        print('keydef:',keydef.name)
         if keydef is not None:
             new_string = "[@#" + string + "#" + keydef.name + "*]"
             row, col = cursor_index.split('.')
