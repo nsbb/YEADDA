@@ -18,7 +18,7 @@ from tkinter.scrolledtext import ScrolledText
 from dataclasses import dataclass
 from typing import List, Optional, Tuple
 import json
-import 
+import PyPDF2
 
 from utils.recommend import *
 
@@ -403,6 +403,7 @@ class Application(Frame):
 
     def readFile(self, filename):
         f = open(filename)
+        print(filename)
         try:
             text = f.read()
             self.file_encoding = f.encoding
