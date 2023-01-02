@@ -402,19 +402,20 @@ class Application(Frame):
             self.show_cursor_pos(None)
 
     def readFile(self, filename):
+        print(filename[-3:])
         if filename[-3:] == 'pdf':
             text = []
             pdfFileObj = open(filename,'rb')
-            pdfReader = PyPDF2.PdfFIleReader(pdfFileObj)
+            pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
             pages = pdfReader.numPages
             for i in range(pages):
                 pageObj = pdfReader.getPage(i)
-                text += "Page No: "+i
+                text += ("Page No: "+i)
                 txt = pageObj.extractText().split("  ")
-                for i range(len(text)):
+                for i in range(len(txt)):
                     text += txt[i]
                     text += '\n'
-                text += []]
+                text += []
             pdfFileObj.close()
 
         else:
