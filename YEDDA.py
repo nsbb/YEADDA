@@ -19,6 +19,7 @@ from dataclasses import dataclass
 from typing import List, Optional, Tuple
 import json
 import PyPDF2
+import sys
 
 from utils.recommend import *
 
@@ -389,6 +390,24 @@ class Application(Frame):
             self.text.set_colors(None)
         self.text.update_view()
 
+    def openPDFsaveTXT(self,pdfname):
+        pdfFileObj = open(filename,'rb')
+        pdfReader = PyPDF2.PdfFileReader(pdfFileOjb)
+        txt_name = (pdfname[:-4]+'.txt')
+        with open('txt_name','w') as f:
+            sys.stdout = f
+            pages = pdfReader.numPages
+            for i in range(pages);
+                pageObj = pdfReader.getPage(i)
+                print("Page No: ",i)
+                text = pageObj.extractText().split("  ")
+                for i in range(len(text)):
+                    print(text[i],end="\n\n")
+                print()
+            pdfFileObj.close()
+            sys.stdout = original_stdout
+        return txt_name
+
     def onOpen(self):
         filename = filedialog.askopenfilename(
             filetypes=[('all files', '.*'), ('text files', '.txt'), ('ann files', '.ann')])
@@ -403,19 +422,10 @@ class Application(Frame):
 
     def readFile(self, filename):
         if filename[-3:] == 'pdf':
-            text = []
-            pdfFileObj = open(filename,'rb')
-            pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
-            pages = pdfReader.numPages
-            for i in range(pages):
-                pageObj = pdfReader.getPage(i)
-                text += ("Page No: "+str(i))
-                txt = pageObj.extractText().split("  ")
-                for i in range(len(txt)):
-                    text += txt[i]
-                    text += '\n'
-                text += []
-            pdfFileObj.close()
+            txt_name = self.openPDFsaveTXT(filename)
+            f = open(txt_name)
+            text = f.read()
+            self.file_encoding = f.encoding
 
         else:
             f = open(filename)
