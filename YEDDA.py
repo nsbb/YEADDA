@@ -395,7 +395,6 @@ class Application(Frame):
         pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
         original_stdout = sys.stdout
         txt_name = (pdfname[:-4]+'.txt')
-        print(txt_name)
         with open('txt_name','w') as f:
             sys.stdout = f
             pages = pdfReader.numPages
@@ -408,6 +407,7 @@ class Application(Frame):
                 print()
             pdfFileObj.close()
             sys.stdout = original_stdout
+        print(txt_name)
         return txt_name
 
     def onOpen(self):
