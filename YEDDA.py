@@ -391,7 +391,7 @@ class Application(Frame):
         self.text.update_view()
 
     def openPDFsaveTXT(self,pdfname):
-        pdfFileObj = open(filename,'rb')
+        pdfFileObj = open(pdfname,'rb')
         pdfReader = PyPDF2.PdfFileReader(pdfFileOjb)
         txt_name = (pdfname[:-4]+'.txt')
         with open('txt_name','w') as f:
