@@ -402,15 +402,30 @@ class Application(Frame):
             self.show_cursor_pos(None)
 
     def readFile(self, filename):
-        f = open(filename)
-        print(filename)
-        try:
-            text = f.read()
-            self.file_encoding = f.encoding
-        except UnicodeDecodeError:
-            f = open(filename, encoding='utf-8')
-            text = f.read()
-        self.fileName = filename
+        if filename[-3:] == 'pdf':
+            text = []
+            pdfFileObj = open(filename,'rb')
+            pdfReader = PyPDF2.PdfFIleReader(pdfFileObj)
+            pages = pdfReader.numPages
+            for i in range(pages):
+                pageObj = pdfReader.getPage(i)
+                text += "Page No: "+i
+                txt = pageObj.extractText().split("  ")
+                for i range(len(text)):
+                    text += txt[i]
+                    text += '\n'
+                text += []]
+            pdfFileObj.close()
+
+        else:
+            f = open(filename)
+            try:
+                text = f.read()
+                self.file_encoding = f.encoding
+            except UnicodeDecodeError:
+                f = open(filename, encoding='utf-8')
+                text = f.read()
+            self.fileName = filename
         return text
 
     def setFont(self, value):
