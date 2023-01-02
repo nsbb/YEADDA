@@ -392,7 +392,7 @@ class Application(Frame):
 
     def openPDFsaveTXT(self,pdfname):
         pdfFileObj = open(pdfname,'rb')
-        pdfReader = PyPDF2.PdfFileReader(pdfFileOjb)
+        pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
         txt_name = (pdfname[:-4]+'.txt')
         with open('txt_name','w') as f:
             sys.stdout = f
