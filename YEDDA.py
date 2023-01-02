@@ -402,7 +402,6 @@ class Application(Frame):
             self.show_cursor_pos(None)
 
     def readFile(self, filename):
-        print(filename[-3:])
         if filename[-3:] == 'pdf':
             text = []
             pdfFileObj = open(filename,'rb')
@@ -410,7 +409,7 @@ class Application(Frame):
             pages = pdfReader.numPages
             for i in range(pages):
                 pageObj = pdfReader.getPage(i)
-                text += ("Page No: "+i)
+                text += ("Page No: "+str(i))
                 txt = pageObj.extractText().split("  ")
                 for i in range(len(txt)):
                     text += txt[i]
