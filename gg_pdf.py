@@ -17,7 +17,8 @@ def main(pdf_name):
                 print(text[i],end="\n\n")
             print()
         pdfFile.close()
-        sys.stdout = original_stdout
+    sys.stdout.close()
+    sys.stdout = original_stdout
 
 if __name__ == '__main__':
     main()
