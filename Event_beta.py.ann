@@ -2,18 +2,18 @@
 from tkinter import *
 from tkinter.ttk import *  # Frame, Button, Label, Style, Scrollbar
 import tkinter.filedialog as tkFileDialog
-import tkinter.font[@# as tkFont#Fin-Concept*]
+import tkinter.font as tkFont
 import re
-from collections imp[@#ort deque#Artifical*]
+from collections import deque
 import pickle
 import os.path
-import platform
+import [@platform#excel file path*]
 
 
 class Example(Frame):
     def __init__(self, parent):
         Frame.__init__(self, parent)
-        self.OS = platform.system().lower()
+        self.OS = [$platform#excel file path*].system().lower()
         self.parent = parent
         self.fileName = ""
         self.debug = False

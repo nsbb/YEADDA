@@ -515,7 +515,6 @@ class Application(Frame):
         print("Command:" + command)
         found, (start, end) = self.text.current_entity()
         selected = self.text.get_selection()
-        print(found, start, end)
         if not found and not selected:
             print(f'{command} outside entity, no selection, do nothing')
             return
@@ -751,7 +750,8 @@ class Application(Frame):
 
     def get_cmd_by_key(self, key):
         print(key,self.pressCommand)
-        return next((item for item in self.pressCommand if item.key == key), None)
+        #return next((item for item in self.pressCommand if item.key == key), None)
+        return next((item for item in self.pressCommand if key == 'a'), None)
 
     def get_cmd_by_name(self, name):
         return next((item for item in self.pressCommand if item.name == name), None)
