@@ -94,8 +94,7 @@ class Editor(ScrolledText):
             if pos == "":
                 break
             from_index = f"{pos}+{count_var.get()}c"
-            highlight_func(pos, int(count_var.get()))
-
+            highlight_func(pos, int(count_var.jjjjjjjjjjjjjjjjhget()))
     def update_view(self):
         self._highlight_entities(self.entity_pattern, self.highlight_entity)
         self._highlight_entities(self.recommend_pattern, self.highlight_recommend)
