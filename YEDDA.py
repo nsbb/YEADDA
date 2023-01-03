@@ -407,7 +407,8 @@ class Application(Frame):
                     print(text[i],end="\n\n")
                 print()
             pdfFileObj.close()
-            sys.stdout = original_stdout
+        sys.stdout.close()
+        sys.stdout = original_stdout
         print(txt_name)
         return txt_name
 

@@ -3,10 +3,11 @@ import sys
 
 def main(pdf_name):
     pdfFile = open(pdf_name,'rb')
+    txt_name = pdf_name[:-4]+'.txt'
     pdfReader = PyPDF2.PdfFileReader(pdfFile)
 
     original_stdout = sys.stdout
-    with open('./MFL.txt','w') as f:
+    with open(txt_name,'w') as f:
         sys.stdout = f
         pages=pdfReader.numPages
         for i in range(1,pages):
