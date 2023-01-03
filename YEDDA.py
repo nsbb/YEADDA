@@ -428,9 +428,11 @@ class Application(Frame):
         if filename[-3:] == 'pdf':
             txt_name = self.openPDFsaveTXT(filename)
             filename = txt_name
+            print(filename)
             f = open(filename)
             text = f.read()
             self.file_encoding = f.encoding
+            self.fileName = filename
         else:
             f = open(filename)
             try:
@@ -615,6 +617,7 @@ class Application(Frame):
 
     def writeFile(self, fileName, content, newcursor_index):
         print("writeFile")
+        print(fileName)
         if len(fileName) > 0:
             if ".ann" in fileName:
                 new_name = fileName
