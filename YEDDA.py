@@ -140,7 +140,7 @@ class KeyDef:
     desc: str = ''
     color: str = None
 
-#changed read_keymap function
+##changed read_keymap function
 class KeyMapFrame(Frame):
     def __init__(self, parent, keymap: List[KeyDef]):
         super().__init__(parent, relief='groove')
@@ -174,6 +174,7 @@ class KeyMapFrame(Frame):
         self.name_entries = []
         self.create_widgets()
 
+    ## 3 label -> 1 label
     def read_keymap(self) -> List[KeyDef]:
         """read current keymap in GUI, might be changed by user"""
         new_map = []
@@ -391,6 +392,7 @@ class Application(Frame):
             self.text.set_colors(None)
         self.text.update_view()
 
+##pdf -> txt
     def openPDFsaveTXT(self,pdfname):
         pdfFileObj = open(pdfname,'rb')
         pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
@@ -751,6 +753,7 @@ class Application(Frame):
     def get_cmd_by_key(self, key):
         print(key,self.pressCommand)
         #return next((item for item in self.pressCommand if item.key == key), None)
+        ## press 'a' key -> label
         return next((item for item in self.pressCommand if key == 'a'), None)
 
     def get_cmd_by_name(self, name):
