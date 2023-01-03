@@ -391,26 +391,6 @@ class Application(Frame):
             self.text.set_colors(None)
         self.text.update_view()
 
-    def openPDFsaveTXT(self,pdfname):
-        pdfFileObj = open(pdfname,'rb')
-        pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
-        original_stdout = sys.stdout
-        txt_name = (pdfname[:-4]+'.txt')
-        with open('txt_name','w') as f:
-            sys.stdout = f
-            pages = pdfReader.numPages
-            for i in range(pages):
-                pageObj = pdfReader.getPage(i)
-                print("Page No: ",i)
-                text = pageObj.extractText().split("  ")
-                for i in range(len(text)):
-                    print(text[i],end="\n\n")
-                print()
-            pdfFileObj.close()
-            sys.stdout = original_stdout
-        print(txt_name)
-        return txt_name
-
     def onOpen(self):
         filename = filedialog.askopenfilename(
             filetypes=[('all files', '.*'), ('text files', '.txt'), ('ann files', '.ann')])
@@ -425,11 +405,11 @@ class Application(Frame):
 
     def readFile(self, filename):
         if filename[-3:] == 'pdf':
-            txt_name = self.openPDFsaveTXT(filename)
+            PdfToTxt.main(filename)
+            txt_name = filename[:-4]+'.txt'
             f = open(txt_name)
             text = f.read()
             self.file_encoding = f.encoding
-
         else:
             f = open(filename)
             try:
