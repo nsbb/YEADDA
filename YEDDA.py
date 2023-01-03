@@ -399,7 +399,7 @@ class Application(Frame):
         with open(txt_name,'w') as f:
             sys.stdout = f
             pages = pdfReader.numPages
-            for i in range(pages):
+            for i in range(1,pages):
                 pageObj = pdfReader.getPage(i)
                 print("Page No: ",i+1)
                 text = pageObj.extractText().split("  ")
