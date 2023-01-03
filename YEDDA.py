@@ -396,12 +396,12 @@ class Application(Frame):
         pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
         original_stdout = sys.stdout
         txt_name = (pdfname[:-4]+'.txt')
-        with open('txt_name','w') as f:
+        with open(txt_name,'w') as f:
             sys.stdout = f
             pages = pdfReader.numPages
             for i in range(pages):
                 pageObj = pdfReader.getPage(i)
-                print("Page No: ",i)
+                print("Page No: ",i+1)
                 text = pageObj.extractText().split("  ")
                 for i in range(len(text)):
                     print(text[i],end="\n\n")
