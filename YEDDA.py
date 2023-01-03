@@ -427,10 +427,10 @@ class Application(Frame):
     def readFile(self, filename):
         if filename[-3:] == 'pdf':
             txt_name = self.openPDFsaveTXT(filename)
-            f = open(txt_name)
+            filename = txt_name
+            f = open(filename)
             text = f.read()
             self.file_encoding = f.encoding
-
         else:
             f = open(filename)
             try:
