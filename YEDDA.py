@@ -94,7 +94,7 @@ class Editor(ScrolledText):
             if pos == "":
                 break
             from_index = f"{pos}+{count_var.get()}c"
-            highlight_func(pos, int(count_var.jjjjjjjjjjjjjjjjhget()))
+            highlight_func(pos, int(count_var.get()))
     def update_view(self):
         self._highlight_entities(self.entity_pattern, self.highlight_entity)
         self._highlight_entities(self.recommend_pattern, self.highlight_recommend)
@@ -269,15 +269,18 @@ class Application(Frame):
         self.initUI()
 
     def KeyDef2Dic(self):
-        config_dic = {}
+        self.config_dic = {}
         for item in self.pressCommand:
-            config_dic[item.key] = item.name
-        return config_dic
+            self.config_dic[item.key] = item.name
+        return self.config_dic
 
     def readConfig(self):
         self.pressCommand = []
         with open(self.configFile, 'r') as fp:
             config_dict = json.load(fp)
+            if type(config_dict) is str:
+                config_dict = json.loads(config_dict)
+
         for index,entity in config_dict.items():
             self.pressCommand.append(KeyDef(index,entity))
         for key, color in zip(self.pressCommand, all_colors()):
@@ -667,10 +670,10 @@ class Application(Frame):
         if self.debug:
             print("Action Track: renewPressCommand")
         self.pressCommand = self.keymap_frame.read_keymap()
-        with open(self.configFile, 'wb') as fp:
-            print('fp',fp)
-            print('self.pressCommand',self.pressCommand,'\n')
-            json.dump(self.KeyDef2Dic(self.pressCommand), fp)
+        with open(self.configFile, 'w') as fp:
+            print('fp=',fp)
+            print('self.pressCommand=',self.pressCommand,'\n')
+            json.dump(json.dumps(self.KeyDef2Dic()), fp)
         self.keymap_frame.update_keymap(self.pressCommand)
         messagebox.showinfo("Remap Notification",
                             "Shortcut map has been updated!\n\n" +
@@ -691,10 +694,10 @@ class Application(Frame):
         # make sure ending with ".config"
         if not self.configFile.endswith(".config"):
             self.configFile += ".config"
-        with open(self.configFile, 'wb') as fp:
+        with open(self.configFile, 'w') as fp:
             print('fp',fp)
             print('self.pressCommand',self.pressCommand,'\n')
-            json.dump(self.KeyDef2Dic(self.pressCommand), fp)
+            json.dump(json.dumps(self.KeyDef2Dic()), fp)
         self.keymap_frame.update_keymap(self.pressCommand)
         messagebox.showinfo("Save New Map Notification",
                             "Shortcut map has been saved and updated!\n\n"
