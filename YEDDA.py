@@ -675,7 +675,7 @@ class Application(Frame):
             print('self.pressCommand=',self.pressCommand,'\n')
             print('KD=',self.KeyDef2Dic())
             json.dump(json.dumps(self.KeyDef2Dic()), fp)
-        self.keymap_frame.update_keymap(self.pressCommand)
+        #self.keymap_frame.update_keymap(self.pressCommand)
         messagebox.showinfo("Remap Notification",
                             "Shortcut map has been updated!\n\n" +
                             "Configure file has been saved in File:" + self.configFile)
@@ -699,7 +699,7 @@ class Application(Frame):
             print('fp',fp)
             print('self.pressCommand',self.pressCommand,'\n')
             json.dump(json.dumps(self.KeyDef2Dic()), fp)
-        self.keymap_frame.update_keymap(self.pressCommand)
+        #self.keymap_frame.update_keymap(self.pressCommand)
         messagebox.showinfo("Save New Map Notification",
                             "Shortcut map has been saved and updated!\n\n"
                             + "Configure file has been saved in File:" + self.configFile)
