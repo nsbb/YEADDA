@@ -673,6 +673,7 @@ class Application(Frame):
         with open(self.configFile, 'w') as fp:
             print('fp=',fp)
             print('self.pressCommand=',self.pressCommand,'\n')
+            print('KD=',self.KeyDef2Dic())
             json.dump(json.dumps(self.KeyDef2Dic()), fp)
         self.keymap_frame.update_keymap(self.pressCommand)
         messagebox.showinfo("Remap Notification",
